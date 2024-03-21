@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+/* HOMEPAGE */
+.home-page{
+    height: 94vh;
+    width: 100%;
+    background-color:#004D8F;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hp-1{
+    height: 80vh;
+    width: 45%;
+    background-color:#004D8F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.hp-1 span{
+    font-size: 4rem;
+    color: #f3bd00;
+    font-weight: 800;
+}
+.hp-1 h2{
+    font-size: 4rem;
+    color: #347571;
+}
+.hp-1 p{
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+.hp-1 img{
+    height: 40vh;
+}
+.hp-11{
+    height: 40vh;
+    width: 100%;
+    background-color:#004D8F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hp-2{
+    height: 80vh;
+    width: 45%;
+    background-color:#004D8F;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hp-2 img{
+    height: 80vh;
+    width: 100%;
+}
+.hp-3{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+}
+.hp-31{
+    height: 80vh;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hp-31 img{
+    height: 60vh;
+}
+.hp-32{
+    height: 80vh;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.hp-32 h2{
+    color: #ffffff;
+    font-size: 3rem;
+}
+.hp-322{
+    height: 15vh;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hp-3222{
+    height: 10vh;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #ffffff;
+    border-radius: 40px;
+}
+.hp-3222 p{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+button:hover{
+    background-color: #ffaa00;
+}
+/* LOGIN PAGE */
+.login{
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+}
+.login form{
+    height: 80vh;
+    width: 40%;
+    border: 5px solid #013a63;
+    border-radius:20px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:#013a63;
+}
+label{
+    color: #ffffff;
+    font-size: 1.35rem;
+}
+label::before{
+    content: "* ";
+    color: red;
+}
+input{
+    height: 5vh;
+    width: 60%;
+    font-size: 1.5rem;
+    border-radius:20px;
+}
+button{
+    height: 6vh;
+    width: 30%;
+    cursor: pointer;
+    background-color: #f3bd00;
+    border-radius: 20px;
+    font-weight: 600;
+}
+form img{
+    height: 12vh;
+}
+form a{
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+form p{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+form p::before{
+    content: "* ";
+    color: red;
+}
+/* SIGNUP PAGE */
+.signup{
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+}
+.signup-1{
+    height: 80vh;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color:#013a63;
+    border: 5px solid #013a63;
+    border-radius: 20px;
+}
+.signup-1 form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 85vh;
+    width: 90%;
+}
+.signup-1 form label{
+    font-size: 1.5rem;
+}
+.signup-1 h2{
+    color: #ffffff;
+}
+.signup-1 form input{
+    height: 6vh;
+    width: 70%;
+    font-size: 1.5rem;
+}
+.signup-1 h2{
+    font-size: 2rem;
+}
+.signup-2 h2{
+    font-size: 2rem;
+}
+.signup-1 img{
+    height: 10vh;
+}
+.signup-2 img{
+    height: 10vh;
+}
+.teacherlogo{
+    height: 30vh;
+}
+li{
+    font-size: 2rem;
+    color: white;
+}
+button:hover{
+    transform: scale(1.1);
+}
+/* ABOUT PAGE */
+.about1{
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+}
+.about11{
+    height: 20vh;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+    flex-direction: column;
+    color: white;
+}
+.about11 img{
+    height: 10vh;
+}
+.aboutus{
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+}
+.aboutuspic{
+    height: 70vh;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.aboutuspic img{
+    height: 60vh;
+}
+.aboutusinfo{
+    height: 80vh;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.aboutusinfo span{
+    color: #f3bd00;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.aboutusinfo h2{
+    color: white;
+    text-align: left;
+    font-size: 1.5rem;
+}
+.aboutusinfo p{
+    font-size: 1.25rem;
+    color: white;
+}
+.tick{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 10vh;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.tick img{
+    height: 5vh;
+}
+.suggestions{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #004D8F;
+}
+.suggestions form{
+    height: 70vh;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: #013a63;
+    border-radius: 40px;
+}
+.suggestions form label{
+    font-size: 1rem;
+}
+.suggestions form h2{
+    font-size: 1.5rem;
+    text-decoration: underline;
+    color: black;
+}
+.suggestions form input{
+    height: 6vh;
+    width: 30%;
+    font-size: 1rem;
+}
+/* }
+.suggestions form button{
+    height: 6vh;
+    width: 30%;
+    font-size: 1.5rem;
+    background-color: #f3bd00;
+    color: black;
+} */
+textarea{
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 40px;
+    width: 40%;
+}
+.contact{
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #004D8F;
+}
+.contact-1{
+    height: 80vh;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contact-2{
+    height: 80vh;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contact-2 h2{
+    font-size: 1.2rem;
+    color: white;
+}
+.contact-2 span{
+    color: #f3bd00;
+    font-size: 1rem;
+}.contact-2 img{
+    height: 70vh;
+}
+.contact-1 img{
+    height: 70vh;
+}
