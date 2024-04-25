@@ -4,7 +4,11 @@ import Footer from './Components/Footer'
 import logo from './logo.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 const ClassroomForm = () => {
+    const not1=()=>toast.error("ALL FIELDS ARE MANDATORY!");
+    const not2=()=>toast.error("CODE ALREADY TAKEN");
+    const not3=()=>toast.success("CLASSROOM CREATED");
     const navigate=useNavigate();
     const {id}=useParams();
     const [data,setData]=useState({
@@ -22,24 +26,25 @@ const ClassroomForm = () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         if(data.name===""||data.code===""){
-            return alert("All Fields Are Mandatory!");
+            return not1();
         }
         else{
             try{
                 const response=await axios.post("http://localhost:5000/CreateClassroom",data);
                 console.log(response);
-                alert("ClassRoom Created!");
+                not3()
                 navigate(`/FacultyClassroom/${id}`)
             }
             catch(err){
                 if(err.response.data.message==="CODE"){
-                    return alert("Code Already Taken!");
+                    return not2();
                 }
             }
         }
     }
   return (
     <>
+    <ToastContainer/>
     <Header/>
     <div className='classroom-form'>
     <div className='classroomform'>

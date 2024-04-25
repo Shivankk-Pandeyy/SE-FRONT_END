@@ -5,7 +5,10 @@ import './Welcome.css'
 import logo from './logo.png'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Updating = () => {
+  const not1=()=>toast.error("INVALID PASSWORD")
   const navigate=useNavigate()
     const [pass,setPass]=useState({
       password:""
@@ -16,10 +19,10 @@ const Updating = () => {
         try{
           const response=await axios.get("http://localhost:5000/FacultyList")
           setStudent(response.data);
-          console.log(student)
+          //console.log(student)
         }
         catch(err){
-          console.log(err);
+          //console.log(err);
         }
       }
       const HandleData=(e)=>{
@@ -31,17 +34,17 @@ const Updating = () => {
       }
       const submitData=async()=>{
           if(pass.password===""){
-            return alert("Enter Valid Password!");
+            not1()
           }
           else{
             try{
               const response=await axios.put("http://localhost:5000/UpdateFacultyPassword/"+id,pass)
               console.log(response);
-              alert('Password Updated Successfully!')
+              //alert('Password Updated Successfully!')
               navigate(`/ProfileFaculty/${id}`);
             }
             catch(err){
-              console.log(err);
+              //console.log(err);
             }
           }
 
@@ -53,6 +56,7 @@ const Updating = () => {
   return (
     <>
     <Header/>
+    <ToastContainer/>
     <div className='profile-student'>
     {
         student.map((val)=>{
@@ -60,7 +64,7 @@ const Updating = () => {
                 return(
                     <div className='student-info'>
     <img src={logo} alt='STUDYLABS LOGO'></img>
-    <h2 style={{color:"#fdf0d5"}}>STUDENT PROFILE</h2>
+    <h2 style={{color:"#fdf0d5"}}>FACULTY PROFILE</h2>
     <h2>Previous Password</h2>
     <div className='box'>
     <p>{val.password}</p>

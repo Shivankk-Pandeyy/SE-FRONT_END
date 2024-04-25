@@ -5,10 +5,16 @@ import search from './search.png'
 import axios from 'axios'
 import studentpic from '../Pages/students.png'
 import teacherpic from '../Pages/training.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const MemberList = () => {
+  const not1=()=>toast.error("USER NOT FOUND");
+  const not2=()=>toast.success("USER FOUND!");
+  const not3=()=>toast.error("ENTER VALID DETAILS!");
   const [teacher,setTeacher]=useState([]);
   const [student,setStudent]=useState([]);
   const [info,setInfo]=useState("");
+  const [bool,setBool]=useState(false);
   const [found,setFound]=useState({
     name:"",
     email:"",
@@ -18,23 +24,23 @@ const MemberList = () => {
   const getUsers=async()=>{
     try{
       const response=await axios.get("http://localhost:5000/StudentList")
-      console.log(response)
+      //console.log(response)
       setStudent(response.data);
-      console.log(student);
+      //console.log(student);
       const response1=await axios.get("http://localhost:5000/FacultyList")
-      console.log(response1)
+      //console.log(response1)
       setTeacher(response1.data);
-      console.log(teacher);
+      //console.log(teacher);
     }
     catch(err){
-      console.log(err);
+      //console.log(err);
     }
   }
   const Searching=()=>{
+    if(info===""){
+      not3()
+    }
     student.map((val)=>{
-      if(val===""){
-        alert("hiiii")
-      }
       if(val.email===info||val.sid===info){
         setFound({
           name:val.name,
@@ -42,13 +48,15 @@ const MemberList = () => {
           id:val.sid,
           st:true,
         })
-        console.log(found)
+        setBool(true);
+        not2();
+        //console.log(found)
+      }
+      else{
+         //return not1()
       }
     })
     teacher.map((val)=>{
-      if(val===""){
-        alert("hiiii")
-      }
       if(val.email===info || val.name===info || val.fid===info){
         setFound({
           name:val.name,
@@ -56,7 +64,9 @@ const MemberList = () => {
           id:val.fid,
           st:false,
         })
-        console.log(found)
+        setBool(true);
+        not2();
+        //console.log(found)
       }
     })
   }
@@ -65,11 +75,13 @@ const MemberList = () => {
   },[])
   return (
     <>
+    <ToastContainer/>
     <Header/>
     <div className='search-box'>
     <div className='searching'>
     <p>ENTER DETAILS</p>
-    <input type='text' placeholder='Enter ID/Email' onChange={(e)=>setInfo(e.target.value)}></input>
+    <input type='text' placeholder='Enter ID/Email' onChange={(e)=>{
+      setInfo(e.target.value)}}></input>
     <img src={search} alt='SEARCH ICON' title='Tap To Search' onClick={Searching}></img>
     </div>
     <div className='member-display'>

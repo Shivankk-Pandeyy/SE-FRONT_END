@@ -5,8 +5,10 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import logo from './logo.png'
 import axios from 'axios'
 import del from './delete.png'
+import { ToastContainer, toast } from 'react-toastify';
 const Classroom = () => {
     const navigate=useNavigate()
+    const not=()=>toast.error("CLASSROOM DELETED!")
     const {id}=useParams();
     const [classes,setClasses]=useState([]);
     const getUser=async()=>{
@@ -16,12 +18,16 @@ const Classroom = () => {
     const deleteClass=async(identity)=>{
         try{
             const response=await axios.delete('http://localhost:5000/DeleteClass/'+identity);
-            console.log(response)
+            //console.log(response)
+            not();
             navigate(`/FacultyClassroom/${id}`)
         }
         catch(err){
             console.log(err);
         }
+    }
+    const NAVIGATE=(uniquecode)=>{
+        navigate(`/ViewClassFaculty/${uniquecode}`);
     }
     useEffect(()=>{
         getUser()
@@ -46,7 +52,7 @@ const Classroom = () => {
     <img src={del} alt='DELETE' title='Delete Class' onClick={(e)=>deleteClass(val._id)}></img>
     </div>
     <div className='member-photo'>
-    <img src={logo} alt='STUDENT' title='Tap To View ClassRoom'></img>
+    <img src={logo} alt='OUR LOGO' title='Tap To View ClassRoom' onClick={(e)=>NAVIGATE(val.code)}></img>
     </div>
     </div>
                 )
@@ -55,6 +61,7 @@ const Classroom = () => {
     }
     </div>
     </div>
+    <ToastContainer/>
     <Footer/>
     </>
   )

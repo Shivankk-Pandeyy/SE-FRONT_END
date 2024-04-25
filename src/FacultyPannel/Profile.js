@@ -40,7 +40,7 @@ const Profile = () => {
     <div className='box'>
     <p>{val.name}</p>
     </div>
-    <h2>Student ID</h2>
+    <h2>Faculty ID</h2>
     <div className='box'>
     <p>{val.fid}</p>
     </div>

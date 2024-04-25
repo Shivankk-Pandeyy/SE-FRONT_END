@@ -5,7 +5,10 @@ import './Welcome.css'
 import logo from './logo.png'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Updating = () => {
+  const not1=()=>toast.error("ENTER VALID PASSWORD");
   const navigate=useNavigate()
     const [pass,setPass]=useState({
       password:""
@@ -16,10 +19,10 @@ const Updating = () => {
         try{
           const response=await axios.get("http://localhost:5000/StudentList")
           setStudent(response.data);
-          console.log(student)
+          //console.log(student)
         }
         catch(err){
-          console.log(err);
+          //console.log(err);
         }
       }
       const HandleData=(e)=>{
@@ -31,13 +34,13 @@ const Updating = () => {
       }
       const submitData=async()=>{
           if(pass.password===""){
-            return alert("Enter Valid Password!");
+            return not1()
           }
           else{
             try{
               const response=await axios.put("http://localhost:5000/UpdateStudentPassword/"+id,pass)
               console.log(response);
-              alert('Password Updated Successfully!')
+              //alert('Password Updated Successfully!')
               navigate(`/ProfileStudent/${id}`);
             }
             catch(err){
@@ -52,6 +55,7 @@ const Updating = () => {
     },[])
   return (
     <>
+    <ToastContainer/>
     <Header/>
     <div className='profile-student'>
     {

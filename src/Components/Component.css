@@ -98,6 +98,7 @@ display: none;
         justify-content: space-evenly;
         height: 10vh;
         background-color: #C4E0FF;
+        background-color: #013a63;
     }
     .header-on{
         display: flex;
@@ -105,6 +106,7 @@ display: none;
         justify-content: space-between;
         height: 100vh;
         background-color: #ffffff;
+        background-color:#004D8F;
     }
     .name{
         display: flex;
@@ -148,14 +150,17 @@ display: none;
         height: 10vh;
         width: 60%;
         border: 2px solid white;
+        border-radius: 60px;
         height: 60vh;
+        background-color: #013a63;
+        background-color:#004D8F;
     }
     .links-on a{
         font-size: 1.5rem;
         cursor: pointer;
         transition: all 1s;
         font-family: 'Young Serif', serif;
-        color:#EBE8E8;
+        color:white;
     }
     
     .links-on a:not(.active):hover{
@@ -163,6 +168,8 @@ display: none;
     }
     .links-on .active{
         color: black;
+        font-size: 2rem;
+        font-weight: 600;
     }
     .menu{
         display: flex;

@@ -5,7 +5,11 @@ import Header from '../Components/Header'
 import { NavLink, useNavigate } from 'react-router-dom'
 import logo from './Logo.png'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const LoginTeacher = () => {
+  const notify1 = () => toast.error("ALL FIELDS ARE MANDATORY!");
+  const notify2 = () => toast.error("INVALID DETAILS");
   const navigate=useNavigate();
     const [data,setData]=useState({
         fid:"",
@@ -13,7 +17,7 @@ const LoginTeacher = () => {
     });
     const [studentList,setStudentList]=useState([]);
     const handelData=(e)=>{
-        console.log(data)
+        //console.log(data)
         const {name,value}=e.target;
         setData({
             ...data,
@@ -23,7 +27,7 @@ const LoginTeacher = () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         if(data.fid==="" || data.password===""){
-            alert("ALL FIELDS ARE MANDATORY!");
+            notify1()
             return;
         }
         else{
@@ -38,8 +42,9 @@ const LoginTeacher = () => {
               
             }
             catch(err){
+              //console.log(err.response.data.message)
               if(err.response.data.message==="INVALID"){
-                alert("INVALID CREDENTIALS!");
+                notify2();
               }
             }
           }
@@ -61,6 +66,7 @@ const LoginTeacher = () => {
     },[])
   return (
     <>
+    <ToastContainer />
     <Header/>
     <div className='login'>
     <form onSubmit={handleSubmit}>

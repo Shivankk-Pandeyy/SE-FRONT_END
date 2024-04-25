@@ -4,9 +4,13 @@ import Footer from './Components/Footer'
 import logo from './logo.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 const ClassroomFormStudent = () => {
+    const not1=()=>toast.error("ALL FIELDS ARE MANDATORY!")
+    const not2=()=>toast.error("ALREADY IN CLASS!")
+    const not3=()=>toast.error("NO CLASS FOUND!")
     const [classList,setClassList]=useState([]);
-    const [classID,setClassID]=useState("");
+
     const navigate=useNavigate();
     const {id}=useParams();
     const [data,setData]=useState({
@@ -14,7 +18,6 @@ const ClassroomFormStudent = () => {
         sid:id,
     })
     const handleData=(e)=>{
-        
         const {name,value}=e.target;
         setData({
             ...data,
@@ -30,38 +33,34 @@ const ClassroomFormStudent = () => {
             console.log(err);
         }
     }
-    const AddStudents=async()=>{
-        try{
 
-        }
-        catch(err){
-            
-        }
+    const AddStudents=async()=>{
+        classList.map(async(val)=>{
+            if(val.code===data.code){
+                try{
+                    const response=await axios.post(`http://localhost:5000/AddStudent/${id}`,data);
+                    console.log(response);
+                    navigate(`/StudentClassroom/${id}`)
+                }
+                catch(err){
+                    if(err.response.data.message==="MEMBER ALREADY ADDED"){
+                        not2();
+                }
+            }
+            }
+        })
+        not3()
     }
     const handleSubmit=async(e)=>{
         e.preventDefault();
         classList.map((val)=>{
             if(val.code===data.code){
-                setClassID(val._id);
-                console.log(classID)
+                
+                //console.log(classID)
             }
         })
         if(data.name===""||data.code===""){
-            return alert("All Fields Are Mandatory!");
-        }
-        else{
-            try{
-                const response=await axios.put(`http://localhost:5000/AddMember/${classID}`,data);
-                console.log(response);
-                alert("ClassRoom Found!");
-                navigate(`/StudentClassroom/${id}`)
-            }
-            catch(err){
-                console.log(err);
-                if(err.response.data.message==="MEMBER ALREADY ADDED"){
-                    alert("Already In The Class!")
-                }
-            }
+            return not1()
         }
     }
 
@@ -70,6 +69,7 @@ const ClassroomFormStudent = () => {
     },[]);
   return (
     <>
+    <ToastContainer/>
     <Header/>
     <div className='classroom-form'>
     <div className='classroomform'>
@@ -77,7 +77,7 @@ const ClassroomFormStudent = () => {
     <form onSubmit={handleSubmit}>
     <label>CODE</label>
     <input type='text' placeholder='Enter Class Code' name='code' onChange={handleData} autoComplete='off'></input>
-    <button type='submit'>Join ClassRoom</button>
+    <button type='submit' onClick={AddStudents}>Join ClassRoom</button>
     </form>
     </div>
     </div>

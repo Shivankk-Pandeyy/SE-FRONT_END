@@ -5,7 +5,15 @@ import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 import { NavLink, useNavigate } from 'react-router-dom'
 import logo from './Logo.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const SignupTeacher = () => {
+  const notify1 = () => toast.error("ALL FIELDS ARE MANDATORY!");
+  const notify2 = () => toast.error("INVALID DETAILS!");
+  const notify3 = () => toast.error("SIGNUP SUCCESSFULL!");
+  const notify5 = () => toast.error("ID EXISTS");
+  const notify6 = () => toast.error("EMAIL EXISTS");
+  const notify7 = () => toast.error("INVALID EMAIL");
   const navigate=useNavigate();
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   const nameRegex=/^[A-Za-z][A-Za-z]$/i;
@@ -28,37 +36,34 @@ const SignupTeacher = () => {
     console.log(data)
     e.preventDefault();
     if(data.name==="" || data.fid==="" || data.email==="" || data.password===""){
-      alert("ALL FIELDS ARE MANDATORY")
-      return;
-    }
-    if(!isvalidName){
-      alert("ENTER VALID NAME");
+      notify1()
       return;
     }
     if(!isValidEmail){
-      alert("ENTER VALID EMAIL")
+      notify7()
       return;
     }
     else{
       try{
         const response=await axios.post("http://localhost:5000/SignupFaculty",data);
         console.log(response)
-        alert("SIGNUP SUCCESFUL")
+        notify3()
         navigate('/LoginPage');
       }
       catch(err){
         console.log(err);
         if(err.response.data.message==="EMAIL"){
-          alert("EMAIL ALREADY EXISTS");
+          notify6()
         }
         else if(err.response.data.message==="ID"){
-          alert("ID ALREADY EXISTS")
+          notify5();
         }
       }
     }
   }
   return (
     <>
+    <ToastContainer/>
     <Header/>
     <div className='login'>
     <form onSubmit={handleSubmit}>

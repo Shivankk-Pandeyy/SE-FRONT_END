@@ -4,8 +4,12 @@ import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 import { NavLink, useNavigate } from 'react-router-dom'
 import logo from './Logo.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 const LoginStudent = () => {
+  const notify1 = () => toast.error("ALL FIELDS ARE MANDATORY!");
+  const notify2 = () => toast.error("INVALID DETAILS");
   const navigate=useNavigate();
     const [data,setData]=useState({
         sid:"",
@@ -23,7 +27,7 @@ const LoginStudent = () => {
     const handleSubmit=async(e)=>{
         e.preventDefault();
         if(data.sid==="" || data.password===""){
-            alert("ALL FIELDS ARE MANDATORY!");
+            notify1();
             return;
         }
         else{
@@ -39,7 +43,7 @@ const LoginStudent = () => {
             }
             catch(err){
               if(err.response.data.message==="INVALID"){
-                alert("INVALID CREDENTIALS!");
+                notify2();
               }
             }
           }
@@ -62,6 +66,7 @@ const LoginStudent = () => {
   return (
     <>
     <Header/>
+    <ToastContainer/>
     <div className='login'>
     <form onSubmit={handleSubmit}>
     <img src={logo} alt='LOGO'></img>

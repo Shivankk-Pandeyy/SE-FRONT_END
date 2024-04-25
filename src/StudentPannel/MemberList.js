@@ -6,7 +6,12 @@ import axios from 'axios'
 import studentpic from '../Pages/students.png'
 import teacherpic from '../Pages/training.png'
 import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const MemberList = () => {
+  const not1=()=>toast.warning("SEARCHING!");
+  const not2=()=>toast.success("USER FOUND!");
+  const not3=()=>toast.error("ENTER VALID DETAILS!");
   const {id}=useParams()
   const navigate=useNavigate()
   const [teacher,setTeacher]=useState([]);
@@ -21,22 +26,25 @@ const MemberList = () => {
   const getUsers=async()=>{
     try{
       const response=await axios.get("http://localhost:5000/StudentList")
-      console.log(response)
+      //console.log(response)
       setStudent(response.data);
-      console.log(student);
+      //console.log(student);
       const response1=await axios.get("http://localhost:5000/FacultyList")
-      console.log(response1)
+      //console.log(response1)
       setTeacher(response1.data);
-      console.log(teacher);
+      //console.log(teacher);
     }
     catch(err){
-      console.log(err);
+      //console.log(err);
     }
   }
   const Searching=()=>{
+    if(info===""){
+      not3()
+    }
     student.map((val)=>{
       if(val===""){
-        alert("hiiii")
+       // alert("hiiii")
       }
       if(val.email===info||val.sid===info){
         setFound({
@@ -45,12 +53,14 @@ const MemberList = () => {
           id:val.sid,
           st:true,
         })
-        console.log(found)
+        not1()
+        not2()
+        //console.log(found)
       }
     })
     teacher.map((val)=>{
       if(val===""){
-        alert("hiiii")
+        //alert("hiiii")
       }
       if(val.email===info || val.name===info || val.fid===info){
         setFound({
@@ -59,7 +69,9 @@ const MemberList = () => {
           id:val.fid,
           st:false,
         })
-        console.log(found)
+        //console.log(found)
+        not1()
+        not2()
       }
     })
   }
@@ -71,6 +83,7 @@ const MemberList = () => {
   },[])
   return (
     <>
+    <ToastContainer/>
     <Header/>
     <div className='search-box'>
     <div className='searching'>

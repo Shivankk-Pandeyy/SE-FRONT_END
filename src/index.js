@@ -23,6 +23,14 @@ import ClassroomFaculty from './FacultyPannel/Classroom';
 import ClassroomStudent from './StudentPannel/ClassroomStudent'
 import ClassroomFormFaculty from './FacultyPannel/ClassroomForm';
 import ClassroomFormStudent from './StudentPannel/ClassroomFormStudent';
+import ViewClass from './FacultyPannel/ViewClass';
+import View from './StudentPannel/View';
+import AUpload from './FacultyPannel/AUpload';
+import QUpload from './FacultyPannel/QUpload';
+import NUpload from './FacultyPannel/NUpload';
+import AUpload1 from './StudentPannel/AUpload';
+import QUpload1 from './StudentPannel/QUpload';
+import NUpload1 from './StudentPannel/NUpload';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -49,6 +57,15 @@ root.render(
   <Route path='/StudentClassroom/:id' element={<ClassroomStudent/>}></Route>
   <Route path='/ClassroomForm/:id' element={<ClassroomFormFaculty/>}></Route>
   <Route path='/ClassroomFormStudent/:id' element={<ClassroomFormStudent/>}></Route>
+  <Route path='/ViewClassFaculty/:id' element={<ViewClass/>}></Route>
+  <Route path='/AssignmentUploadFaculty/:id' element={<AUpload/>}></Route>
+  <Route path='/QuizUploadFaculty/:id' element={<QUpload/>}></Route>
+  <Route path='/NotesUploadFaculty/:id' element={<NUpload/>}></Route>
+  <Route path='/ViewClassStudent/:id' element={<View/>}></Route>
+  <Route path='/AssignmentUploadStudent/:id' element={<AUpload1/>}></Route>
+  <Route path='/QuizUploadStudent/:id' element={<QUpload1/>}></Route>
+  <Route path='/NotesUploadStudent/:id' element={<NUpload1/>}></Route>
+
   
   </Routes>
   </BrowserRouter>
